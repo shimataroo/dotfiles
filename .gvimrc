@@ -3,7 +3,8 @@
 " ------------------------------------
 syntax enable
 set t_Co=256
-colorscheme atom-dark-256
+colorscheme dracula
+set guifont=Monospace\ Regular\ 9
 
 " ------------------------------------
 " window size
@@ -12,5 +13,10 @@ colorscheme atom-dark-256
 set lines=40
 " 横幅　デフォルトは80
 set columns=80 
+
+" ------------------------------------
+"画面の点滅を消す
+" ------------------------------------
+set visualbell t_vb=
 
 

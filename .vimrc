@@ -35,7 +35,8 @@ NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'scrooloose/syntastic'
 " 多機能セレクタ
 NeoBundle 'ctrlpvim/ctrlp.vim'
-
+" 括弧の補完
+NeoBundle 'cohama/lexima.vim'
 " エアーライン
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
@@ -50,6 +51,10 @@ NeoBundle 'rking/ag.vim'
 NeoBundle 'pmsorhaindo/syntastic-local-eslint.vim'
 " Unite
 NeoBundle 'Shougo/unite.vim'
+" マークダウン
+NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'kannokanno/previm'
+NeoBundle 'tyru/open-browser.vim'
 " vimのlua機能が使える時だけ以下のVimプラグインをインストールする
 if has('lua')
     " コードの自動補完
@@ -79,8 +84,8 @@ NeoBundleCheck
 " カラースキーマを宣言する
 "----------------------------------------------------------
 syntax enable
+colorscheme dracula
 set t_Co=256
-colorscheme atom-dark-256
 
 "----------------------------------------------------------
 " 文字
@@ -88,7 +93,7 @@ colorscheme atom-dark-256
 set fileencoding=utf-8 " 保存時の文字コード
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読み込み時の文字コードの自動判別. 左側が優先される
 set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先される
-set ambiwidth=double " □や○文字が崩れる問題を解決
+set ambiwidth=double " □や○文字が崩れる問題を解決 
 
 "----------------------------------------------------------
 " ステータスライン
@@ -249,3 +254,18 @@ if executable('ag')
   let g:ctrlp_use_caching=0 " CtrlPのキャッシュを使わない
   let g:ctrlp_user_command='ag %s -i --hidden -g ""' " 「ag」の検索設定
 endif
+
+""" markdown {{{
+  autocmd BufRead,BufNewFile *.mkd  set filetype=markdown
+  autocmd BufRead,BufNewFile *.md  set filetype=markdown
+  " Need: kannokanno/previm
+  nnoremap <silent> <C-p> :PrevimOpen<CR> " Ctrl-pでプレビュー
+  " 自動で折りたたまないようにする
+  let g:vim_markdown_folding_disabled=1
+" }}}
+
+"----------------------------------------------------------
+" モード切替キー変更
+"----------------------------------------------------------
+imap <C-j> <esc>
+noremap! <C-j> <esc>
