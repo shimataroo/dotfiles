@@ -1,4 +1,3 @@
- 
 set encoding=utf-8
 scriptencoding utf-8
 " ↑1行目は読み込み時の文字コードの設定
@@ -24,8 +23,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 " インストールするVimプラグインを以下に記述
 " NeoBundle自身を管理
 NeoBundleFetch 'Shougo/neobundle.vim'
-" カラースキームmolokai
-"NeoBundle 'tomasr/molokai'
+" カラースキームのインストール
 " ステータスラインの表示内容強化
 NeoBundle 'itchyny/lightline.vim'
 " インデントの可視化set completeopt=menuone
@@ -75,19 +73,15 @@ filetype plugin indent on
 NeoBundleCheck
 
 "----------------------------------------------------------
-" カラースキーム
-"----------------------------------------------------------
-"if neobundle#is_installed('molokai')
-"   colorscheme molokai " カラースキームにmolokaiを設定する
-"endif
-
-"----------------------------------------------------------
 " カラースキーマを宣言する
 "----------------------------------------------------------
-syntax enable
-colorscheme dracula
+syntax on
+colorscheme material-theme 
 set t_Co=256
-
+" truecolor¬
+set termguicolors
+" 背景色¬
+set background=dark
 "----------------------------------------------------------
 " 文字
 "----------------------------------------------------------
@@ -162,7 +156,12 @@ inoremap [ []<LEFT>
 "----------------------------------------------------------
 let g:go_fmt_command = "goimports"
 set completeopt=menuone
-
+let g:go_highlight_types = 1	"let g:go_highlight_types = 1
+let g:go_highlight_fields = 1	"let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1	"let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1	"let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1	"let g:go_highlight_structs = 1
+let g:go_highlight_function_calls = 1
 "----------------------------------------------------------
 " マウスでカーソル移動とスクロール
 "----------------------------------------------------------
@@ -193,6 +192,8 @@ if &term =~ "xterm"
 
     inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
 endif
+
+set clipboard=unnamedplus
 
 "----------------------------------------------------------
 " neocomplete・neosnippetの設定
@@ -277,3 +278,17 @@ endif
 "----------------------------------------------------------
 imap <C-j> <esc>
 noremap! <C-j> <esc>
+
+
+"----------------------------------------------------------
+" Windowの表示 
+"----------------------------------------------------------
+" set guioptions-=m
+
+set guioptions-=T
+
+
+
+
+
+

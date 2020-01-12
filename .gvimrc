@@ -2,11 +2,12 @@
 " ------------------------------------
 " colorscheme
 " ------------------------------------
-syntax enable
+syntax on
 set t_Co=256
-colorscheme dracula
-set guifont=RictyDiminished\ Regular\ 12
-
+colorscheme material-theme 
+set guifont=RictyDiminished\ Regular\ 11
+set termguicolors
+set background=dark
 " ------------------------------------
 " window size
 " ------------------------------------
